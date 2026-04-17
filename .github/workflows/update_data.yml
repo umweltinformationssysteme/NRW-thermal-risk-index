@@ -1,0 +1,35 @@
+name: Update NRW Thermal Index
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # Runs daily at 05:00 UTC
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install system dependencies
+        run: sudo apt-get install -y eccodes
+
+      - name: Install Python packages
+        run: pip install pandas xarray cfgrib requests eccodes
+
+      - name: Run update script
+        run: python scripts/fetch_weather.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "WeatherBot"
+          git config --global user.email "actions@github.com"
+          git add output/weather_data.json
+          git commit -m "Automated weather update $(date)" || exit 0
+          git push
