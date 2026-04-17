@@ -21,8 +21,10 @@ def get_thermal_info(temp_celsius):
 
 def get_latest_grib_url():
     """Scans the DWD directory to find the most recent GFT (Perceived Temp) file."""
+    print(f"Scanning {BASE_URL} for the latest forecast file...")
     response = requests.get(BASE_URL)
     response.raise_for_status()
+    # Matches files containing 'icreu_gft' and ending in .bin or .grib2
     pattern = r'href="([^"]*icreu_gft[^"]*\.(?:bin|grib2))"'
     files = re.findall(pattern, response.text)
     if not files:
@@ -31,49 +33,64 @@ def get_latest_grib_url():
     return BASE_URL + files[-1]
 
 def main():
-    # 1. Download
+    # 1. Download the latest data
     try:
         target_url = get_latest_grib_url()
+        print(f"Downloading: {target_url}")
         with requests.get(target_url, stream=True) as r:
             r.raise_for_status()
             with open("temp.grib2", "wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
+        print("Download complete.")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Critical Error during download: {e}")
         sys.exit(1)
 
-    # 2. Open dataset
+    # 2. Open dataset and optimize performance
+    print("Opening and cropping dataset to NRW region...")
     try:
+        # indexpath='' prevents permission errors on GitHub Actions
         ds = xr.open_dataset("temp.grib2", engine="cfgrib", backend_kwargs={'indexpath': ''})
-        time_var = 'time' if 'time' in ds.coords else 'valid_time'
+        
+        # Performance Trick: Crop to NRW bounding box and load into RAM
+        # This makes the 396 individual municipality lookups much faster
+        ds_nrw = ds.sel(
+            latitude=slice(52.5, 50.3), 
+            longitude=slice(5.8, 9.5)
+        ).load()
+        
+        time_var = 'time' if 'time' in ds_nrw.coords else 'valid_time'
+        print(f"Using time coordinate: {time_var}")
     except Exception as e:
         print(f"Failed to parse data: {e}")
         sys.exit(1)
     
-    # 3. Process municipalities
+    # 3. Process each municipality
     df_coords = pd.read_csv(CSV_PATH)
-    
-    # Use UTC for matching DWD data timestamps
     today_dt = datetime.datetime.now(datetime.timezone.utc).date()
     forecast_days = [today_dt, today_dt + datetime.timedelta(days=1), today_dt + datetime.timedelta(days=2)]
     
     results = []
+    print(f"Processing {len(df_coords)} municipalities...")
+    
     for _, row in df_coords.iterrows():
-        point = ds.sel(latitude=row['lat'], longitude=row['lon'], method='nearest')
+        # Select nearest point from our pre-cropped NRW dataset
+        point = ds_nrw.sel(latitude=row['lat'], longitude=row['lon'], method='nearest')
         
         daily_forecasts = {}
         for i, key in enumerate(["today", "tomorrow", "day_after"]):
             target_date = forecast_days[i]
             
-            # Extract data for the day
+            # Filter for the specific day
             day_data = point.where(point[time_var].dt.date == target_date, drop=True)
             
+            # Use size to avoid 'unsized object' error
             if day_data[time_var].size > 0:
                 raw_max = float(day_data.PT1M.max())
                 
                 if not pd.isna(raw_max):
-                    # CONVERSION: If temp is in Kelvin (e.g. > 100), convert to Celsius
+                    # Conversion: DWD usually provides Perceived Temp in Kelvin
                     temp_c = raw_max - 273.15 if raw_max > 100 else raw_max
                     
                     feeling, hazard, color = get_thermal_info(temp_c)
@@ -95,13 +112,13 @@ def main():
             "forecasts": daily_forecasts
         })
 
-    # 4. Save results
+    # 4. Save results to JSON
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     import json
     with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=4, ensure_ascii=False)
     
-    print(f"Updated {len(results)} cities. Check the output/ folder.")
+    print(f"Update successful. Data saved to {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     main()
