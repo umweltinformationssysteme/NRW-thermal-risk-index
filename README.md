@@ -40,3 +40,17 @@ To run this locally:
 1. Install `eccodes` on your system.
 2. Run `pip install -r requirements.txt`.
 3. Execute `python scripts/fetch_weather.py`.
+
+
+.
+├── .github/
+│   └── workflows/
+│       └── update_data.yml    # The automation engine
+├── data/
+│   └── municipality_nrw.csv   # Your uploaded CSV file
+├── output/
+│   └── weather_data.json      # Generated output for the dashboard
+├── scripts/
+│   └── fetch_weather.py       # The Python logic
+├── requirements.txt           # Python dependencies
+└── README.md                  # Project documentation (English)
