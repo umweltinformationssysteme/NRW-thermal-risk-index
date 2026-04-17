@@ -24,7 +24,6 @@ def get_latest_grib_url():
     print(f"Scanning {BASE_URL} for the latest forecast file...")
     response = requests.get(BASE_URL)
     response.raise_for_status()
-    # Matches files containing 'icreu_gft' and ending in .bin or .grib2
     pattern = r'href="([^"]*icreu_gft[^"]*\.(?:bin|grib2))"'
     files = re.findall(pattern, response.text)
     if not files:
@@ -33,7 +32,7 @@ def get_latest_grib_url():
     return BASE_URL + files[-1]
 
 def main():
-    # 1. Download the latest data
+    # 1. Download
     try:
         target_url = get_latest_grib_url()
         print(f"Downloading: {target_url}")
@@ -47,17 +46,19 @@ def main():
         print(f"Critical Error during download: {e}")
         sys.exit(1)
 
-    # 2. Open dataset and optimize performance
-    print("Opening and cropping dataset to NRW region...")
+    # 2. Open dataset
+    print("Opening and processing dataset...")
     try:
-        # indexpath='' prevents permission errors on GitHub Actions
         ds = xr.open_dataset("temp.grib2", engine="cfgrib", backend_kwargs={'indexpath': ''})
         
-        # Performance Trick: Crop to NRW bounding box and load into RAM
-        # This makes the 396 individual municipality lookups much faster
+        # FIX: Ensure latitudes are ascending for easier slicing
+        if ds.latitude[0] > ds.latitude[-1]:
+            ds = ds.sortby("latitude")
+            
+        # Performance: Crop to NRW bounding box (with a small buffer)
         ds_nrw = ds.sel(
-            latitude=slice(52.5, 50.3), 
-            longitude=slice(5.8, 9.5)
+            latitude=slice(50.2, 52.6), 
+            longitude=slice(5.7, 9.6)
         ).load()
         
         time_var = 'time' if 'time' in ds_nrw.coords else 'valid_time'
@@ -66,7 +67,7 @@ def main():
         print(f"Failed to parse data: {e}")
         sys.exit(1)
     
-    # 3. Process each municipality
+    # 3. Process municipalities
     df_coords = pd.read_csv(CSV_PATH)
     today_dt = datetime.datetime.now(datetime.timezone.utc).date()
     forecast_days = [today_dt, today_dt + datetime.timedelta(days=1), today_dt + datetime.timedelta(days=2)]
@@ -75,50 +76,48 @@ def main():
     print(f"Processing {len(df_coords)} municipalities...")
     
     for _, row in df_coords.iterrows():
-        # Select nearest point from our pre-cropped NRW dataset
-        point = ds_nrw.sel(latitude=row['lat'], longitude=row['lon'], method='nearest')
-        
-        daily_forecasts = {}
-        for i, key in enumerate(["today", "tomorrow", "day_after"]):
-            target_date = forecast_days[i]
+        try:
+            # Select nearest point
+            point = ds_nrw.sel(latitude=row['lat'], longitude=row['lon'], method='nearest')
             
-            # Filter for the specific day
-            day_data = point.where(point[time_var].dt.date == target_date, drop=True)
-            
-            # Use size to avoid 'unsized object' error
-            if day_data[time_var].size > 0:
-                raw_max = float(day_data.PT1M.max())
+            daily_forecasts = {}
+            for i, key in enumerate(["today", "tomorrow", "day_after"]):
+                target_date = forecast_days[i]
+                day_data = point.where(point[time_var].dt.date == target_date, drop=True)
                 
-                if not pd.isna(raw_max):
-                    # Conversion: DWD usually provides Perceived Temp in Kelvin
-                    temp_c = raw_max - 273.15 if raw_max > 100 else raw_max
-                    
-                    feeling, hazard, color = get_thermal_info(temp_c)
-                    daily_forecasts[key] = {
-                        "temp_c": round(temp_c, 1),
-                        "feeling": feeling,
-                        "hazard": hazard,
-                        "color": color
-                    }
+                if day_data[time_var].size > 0:
+                    raw_max = float(day_data.PT1M.max())
+                    if not pd.isna(raw_max):
+                        # Kelvin to Celsius conversion
+                        temp_c = raw_max - 273.15 if raw_max > 100 else raw_max
+                        feeling, hazard, color = get_thermal_info(temp_c)
+                        daily_forecasts[key] = {
+                            "temp_c": round(temp_c, 1),
+                            "feeling": feeling,
+                            "hazard": hazard,
+                            "color": color
+                        }
+                    else:
+                        daily_forecasts[key] = None
                 else:
                     daily_forecasts[key] = None
-            else:
-                daily_forecasts[key] = None
-        
-        results.append({
-            "city": row['name'],
-            "lat": row['lat'],
-            "lon": row['lon'],
-            "forecasts": daily_forecasts
-        })
+            
+            results.append({
+                "city": row['name'],
+                "lat": row['lat'],
+                "lon": row['lon'],
+                "forecasts": daily_forecasts
+            })
+        except Exception as e:
+            print(f"Skipping {row['name']} due to error: {e}")
 
-    # 4. Save results to JSON
+    # 4. Save results
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     import json
     with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=4, ensure_ascii=False)
     
-    print(f"Update successful. Data saved to {OUTPUT_PATH}")
+    print(f"Update successful. Processed {len(results)} municipalities.")
 
 if __name__ == "__main__":
     main()
