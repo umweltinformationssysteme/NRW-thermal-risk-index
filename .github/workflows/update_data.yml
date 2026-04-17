@@ -17,8 +17,10 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install system dependencies
-        run: sudo apt-get install -y eccodes
+- name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libeccodes-dev
 
       - name: Install Python packages
         run: pip install pandas xarray cfgrib requests eccodes
