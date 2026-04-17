@@ -1,50 +1,61 @@
-name: Update NRW Thermal Index
+name: NRW Thermischer Gefahrenindex – Tägliche Aktualisierung
 
 on:
   schedule:
-    # Runs daily at 05:00 UTC (06:00 or 07:00 German time)
-    - cron: '0 5 * * *'
-  # Allows you to run this workflow manually from the Actions tab
+    # Täglich 09:00 UTC (= 10:00 MEZ / 11:00 MESZ)
+    - cron: "0 9 * * *"
+  # Manueller Start über GitHub Actions UI
   workflow_dispatch:
 
+permissions:
+  contents: write   # README.md und output/ committen
+
 jobs:
-  update:
+  update-thermal-index:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v3
+      # -----------------------------------------------------------------------
+      - name: Repository auschecken
+        uses: actions/checkout@v4
 
-      - name: Set up Python environment
-        uses: actions/setup-python@v4
+      # -----------------------------------------------------------------------
+      - name: Python einrichten
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: "3.12"
+          cache: pip
 
-      - name: Install system dependencies (ecCodes)
+      # -----------------------------------------------------------------------
+      - name: Systemabhängigkeiten (eccodes für cfgrib)
         run: |
-          # Update package lists to find libeccodes
-          sudo apt-get update
-          # libeccodes-dev is the standard package for Ubuntu environments
-          sudo apt-get install -y libeccodes-dev
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libeccodes-dev
 
-      - name: Install Python libraries
+      # -----------------------------------------------------------------------
+      - name: Python-Pakete installieren
+        run: pip install --upgrade pip && pip install -r requirements.txt
+
+      # -----------------------------------------------------------------------
+      - name: Vorhersage abrufen und README aktualisieren
+        run: python fetch_weather.py
+        env:
+          PYTHONUNBUFFERED: "1"
+
+      # -----------------------------------------------------------------------
+      - name: Ergebnisse committen und pushen
         run: |
-          # Upgrade pip and install required Python packages
-          python -m pip install --upgrade pip
-          pip install pandas xarray cfgrib requests
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Run weather update script
-        # Executes the logic to download GRIB2 and process NRW municipalities
-        run: python scripts/fetch_weather.py
+          git add output/weather_data.json README.md
 
-      - name: Commit and push updated JSON
-        run: |
-          # Set up git user for the automated commit
-          git config --global user.name "WeatherBot"
-          git config --global user.email "actions@github.com"
-          
-          # Only commit if the output file has actually changed
-          git add output/weather_data.json
-          git commit -m "Automated weather update: $(date +'%Y-%m-%d %H:%M')" || exit 0
-          
-          # Push the changes back to the repository
-          git push
+          # Nur committen wenn tatsächlich Änderungen vorliegen
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen – kein Commit nötig."
+          else
+            TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+            git commit -m "chore: Thermischer Gefahrenindex aktualisiert – ${TIMESTAMP}"
+            git push
+          fi
