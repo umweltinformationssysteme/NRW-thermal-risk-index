@@ -3,4 +3,4 @@ xarray>=2024.1
 pandas>=2.0
 numpy>=1.26
 requests>=2.31
-eccodes>=1.6       # Python-Binding (Fallback falls apt-Paket fehlt)
+eccodes>=1.6
