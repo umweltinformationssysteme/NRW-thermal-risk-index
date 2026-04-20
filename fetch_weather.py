@@ -161,8 +161,19 @@ def process(ds: xr.Dataset, df: pd.DataFrame,
     log.info("Using variable '%s'", var)
 
     # Build KD-Tree over grid points
-    grid_lat = ds.latitude.values.ravel()
-    grid_lon = ds.longitude.values.ravel()
+    # latitude/longitude can be 1-D vectors or 2-D arrays (curvilinear grids).
+    lat_vals = ds.latitude.values
+    lon_vals = ds.longitude.values
+    if lat_vals.ndim == 1 and lon_vals.ndim == 1:
+        # 1-D axes → build full meshgrid, then flatten
+        lon_2d, lat_2d = np.meshgrid(lon_vals, lat_vals)
+        grid_lat = lat_2d.ravel()
+        grid_lon = lon_2d.ravel()
+    else:
+        # Already 2-D (e.g. 657 x 1377) → flatten both together
+        grid_lat = lat_vals.ravel()
+        grid_lon = lon_vals.ravel()
+
     tree = cKDTree(np.column_stack([grid_lat, grid_lon]))
     _, nn_idx = tree.query(df[["lat", "lon"]].values)
     log.info("KD-Tree: %d grid points, %d municipalities mapped",
