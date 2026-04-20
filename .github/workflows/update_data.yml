@@ -1,61 +1,49 @@
-name: NRW Thermischer Gefahrenindex – Tägliche Aktualisierung
+name: NRW Thermischer Gefahrenindex
 
 on:
   schedule:
-    # Täglich 09:00 UTC (= 10:00 MEZ / 11:00 MESZ)
-    - cron: "0 9 * * *"
-  # Manueller Start über GitHub Actions UI
-  workflow_dispatch:
+    - cron: "0 9 * * *"   # täglich 09:00 UTC  (= 10:00 MEZ / 11:00 MESZ)
+  workflow_dispatch:        # manueller Start jederzeit möglich
 
 permissions:
-  contents: write   # README.md und output/ committen
+  contents: write           # für git commit & push
 
 jobs:
-  update-thermal-index:
+  update:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
     steps:
-      # -----------------------------------------------------------------------
       - name: Repository auschecken
         uses: actions/checkout@v4
 
-      # -----------------------------------------------------------------------
       - name: Python einrichten
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
 
-      # -----------------------------------------------------------------------
-      - name: Systemabhängigkeiten (eccodes für cfgrib)
+      - name: eccodes (Systempaket für cfgrib)
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends libeccodes-dev
 
-      # -----------------------------------------------------------------------
       - name: Python-Pakete installieren
         run: pip install --upgrade pip && pip install -r requirements.txt
 
-      # -----------------------------------------------------------------------
-      - name: Vorhersage abrufen und README aktualisieren
+      - name: Vorhersage abrufen
         run: python fetch_weather.py
         env:
           PYTHONUNBUFFERED: "1"
 
-      # -----------------------------------------------------------------------
-      - name: Ergebnisse committen und pushen
+      - name: Ergebnisse committen
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           git add output/weather_data.json README.md
-
-          # Nur committen wenn tatsächlich Änderungen vorliegen
           if git diff --cached --quiet; then
-            echo "Keine Änderungen – kein Commit nötig."
+            echo "Keine Änderungen – kein Commit."
           else
-            TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-            git commit -m "chore: Thermischer Gefahrenindex aktualisiert – ${TIMESTAMP}"
+            git commit -m "chore: thermischer Gefahrenindex $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
           fi
