@@ -323,37 +323,64 @@ def update_readme(table: str) -> None:
 # ---------------------------------------------------------------------------
 def export_geojson(results: list[dict], dates: dict) -> None:
     """
-    Merge perceived-temperature forecast into the municipality polygon GeoJSON
-    and write to output/thermal_index_nrw.geojson for map rendering and download.
+    Merge forecast data into municipality polygon GeoJSON via spatial join.
+
+    Uses a spatial join (centroid-in-polygon) instead of name matching to avoid
+    mismatches between CSV names and GeoJSON property names (GEN, NAME, etc.).
     """
     import json as _json
+    import geopandas as gpd
+    from shapely.geometry import Point
 
     if not GEOJSON_SRC.exists():
         log.warning("municipality_nrw.geojson not found – skipping GeoJSON export")
         return
 
-    with open(GEOJSON_SRC, encoding="utf-8") as f:
-        geo = _json.load(f)
+    # Load polygon GeoJSON
+    poly_gdf = gpd.read_file(str(GEOJSON_SRC))
+    if poly_gdf.crs is None:
+        poly_gdf = poly_gdf.set_crs("EPSG:4326")
+    else:
+        poly_gdf = poly_gdf.to_crs("EPSG:4326")
+    log.info("GeoJSON properties: %s", list(poly_gdf.columns))
 
-    # Build lookup: name → today's forecast
-    lookup = {r["name"]: r["forecasts"] for r in results}
+    # Build point GeoDataFrame from CSV centroids + forecast results
+    rows = []
+    for r in results:
+        today = (r["forecasts"].get("today") or {})
+        rows.append({
+            "csv_name":        r["name"],
+            "perceived_temp_c": today.get("perceived_temp_c"),
+            "sensation":        today.get("sensation"),
+            "risk":             today.get("risk"),
+            "bg_color":         today.get("bg_color"),
+            "forecast_today":           _json.dumps(r["forecasts"].get("today"),   ensure_ascii=False),
+            "forecast_tomorrow":        _json.dumps(r["forecasts"].get("tomorrow"), ensure_ascii=False),
+            "forecast_day_after":       _json.dumps(r["forecasts"].get("day_after_tomorrow"), ensure_ascii=False),
+            "geometry": Point(r["lon"], r["lat"]),
+        })
+    pts_gdf = gpd.GeoDataFrame(rows, crs="EPSG:4326")
 
-    for feat in geo.get("features", []):
-        name = feat.get("properties", {}).get("name", "")
-        fc   = lookup.get(name, {})
-        today = fc.get("today") or {}
-        feat["properties"]["perceived_temp_c"] = today.get("perceived_temp_c")
-        feat["properties"]["sensation"]        = today.get("sensation")
-        feat["properties"]["risk"]             = today.get("risk")
-        feat["properties"]["bg_color"]         = today.get("bg_color")
-        feat["properties"]["forecast_today"]   = fc.get("today")
-        feat["properties"]["forecast_tomorrow"]        = fc.get("tomorrow")
-        feat["properties"]["forecast_day_after_tomorrow"] = fc.get("day_after_tomorrow")
+    # Spatial join: each centroid point → enclosing polygon
+    joined = gpd.sjoin(poly_gdf, pts_gdf, how="left", predicate="contains")
 
+    # Count matches
+    matched = joined["perceived_temp_c"].notna().sum()
+    log.info("Spatial join: %d/%d polygons matched to a forecast point",
+             matched, len(joined))
+    if matched == 0:
+        # Fallback: nearest join (handles edge cases where centroid is just outside polygon)
+        log.warning("No matches via 'contains' – trying nearest join")
+        joined = gpd.sjoin_nearest(poly_gdf, pts_gdf, how="left", max_distance=5000)
+        matched = joined["perceived_temp_c"].notna().sum()
+        log.info("Nearest join: %d/%d matched", matched, len(joined))
+
+    # Write output GeoJSON
     OUTPUT_GEOJSON.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_GEOJSON.write_text(
-        _json.dumps(geo, ensure_ascii=False, separators=(",", ":")), "utf-8")
-    log.info("GeoJSON saved: %s", OUTPUT_GEOJSON)
+        joined.to_json(ensure_ascii=False), "utf-8")
+    log.info("GeoJSON saved: %s  (%d features, %d with forecast data)",
+             OUTPUT_GEOJSON, len(joined), matched)
 
 
 def main() -> None:
