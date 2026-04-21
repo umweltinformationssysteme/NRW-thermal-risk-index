@@ -411,7 +411,9 @@ def main() -> None:
             run_str  = (run_dt or datetime.datetime.now(datetime.timezone.utc)).isoformat()
             render_map(date_str, run_str)
         except Exception as e:
-            log.error("Map rendering failed: %s", e)
+            import traceback
+            log.error("Map rendering failed:\n%s", traceback.format_exc())
+            sys.exit(1)   # fail loudly so the workflow shows the error
 
         update_readme(build_table(
             results, dates,
