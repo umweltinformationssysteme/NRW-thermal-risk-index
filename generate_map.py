@@ -72,17 +72,18 @@ COLOUR_STEPS: list[tuple[float, str]] = [
 ]
 
 # 9-group labels for the compact legend (sensation + risk + representative colour)
+# Same structure as LEGEND_GROUPS in fetch_weather.py:
+# (sensation, risk, representative_hex, pt_range)
 LEGEND_GROUPS: list[tuple[str, str, str, str]] = [
-    # (sensation_en,   sensation_de,   risk_en,    hex)
-    ("Very cold",    "Sehr kalt",    "Very high", "#1967FD"),
-    ("Cold",         "Kalt",         "High",      "#3D81FE"),
-    ("Cool",         "Kühl",         "Elevated",  "#81BEFD"),
-    ("Slightly cool","Leicht kühl",  "Low",       "#B4E6FF"),
-    ("Comfortable",  "Behaglich",    "None",      "#00E700"),
-    ("Slightly warm","Leicht warm",  "Low",       "#FEE362"),
-    ("Warm",         "Warm",         "Elevated",  "#FFAF34"),
-    ("Hot",          "Heiß",         "High",      "#E11902"),
-    ("Very hot",     "Sehr heiß",    "Very high", "#E04BFF"),
+    ("Very cold",     "Very high", "#1967FD", "≤ −39 °C"),
+    ("Cold",          "High",      "#3D81FE", "−39 to −26 °C"),
+    ("Cool",          "Elevated",  "#81BEFD", "−26 to −13 °C"),
+    ("Slightly cool", "Low",       "#B4E6FF", "−13 to 0 °C"),
+    ("Comfortable",   "None",      "#00E700", "0 to +20 °C"),
+    ("Slightly warm", "Low",       "#FEE362", "+20 to +26 °C"),
+    ("Warm",          "Elevated",  "#FFAF34", "+26 to +32 °C"),
+    ("Hot",           "High",      "#E11902", "+32 to +38 °C"),
+    ("Very hot",      "Very high", "#E04BFF", "≥ +38 °C"),
 ]
 
 
@@ -157,7 +158,7 @@ def draw_legend(ax: plt.Axes, date_str: str, n_municipalities: int) -> None:
             transform=ax.transAxes, fontsize=5.0, color="#555555",
             va="top", ha="center", zorder=6)
 
-    for i, (sensation_en, sensation_de, risk, hex_c) in enumerate(LEGEND_GROUPS):
+    for i, (sensation, risk, hex_c, pt_range) in enumerate(LEGEND_GROUPS):
         y = y0 - 0.07 - i * row_h
         r, g, b, _ = hex_to_rgba(hex_c)
         rect = mpatches.Rectangle(
@@ -167,10 +168,10 @@ def draw_legend(ax: plt.Axes, date_str: str, n_municipalities: int) -> None:
             transform=ax.transAxes, zorder=6,
         )
         ax.add_patch(rect)
-        ax.text(x0 + box_w + 0.008, y, f"{sensation_en}",
+        ax.text(x0 + box_w + 0.008, y, f"{sensation}  {pt_range}",
                 transform=ax.transAxes, fontsize=5.8,
                 va="center", ha="left", zorder=6)
-        ax.text(x0 + box_w + 0.008, y - 0.020, f"Risk: {risk}",
+        ax.text(x0 + box_w + 0.008, y - 0.018, f"Risk: {risk}",
                 transform=ax.transAxes, fontsize=4.5, color="#555555",
                 va="center", ha="left", zorder=6)
 
@@ -266,10 +267,19 @@ def render_map(date_str: str, run_str: str) -> None:
 
     # Save
     OUTPUT_MAP.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(str(OUTPUT_MAP), dpi=DPI, bbox_inches="tight",
-                facecolor=fig.get_facecolor(), format="jpeg", quality=92)
+    # Save via Pillow for JPEG quality control (matplotlib's print_jpg
+    # does not accept a quality kwarg in all versions)
+    import io
+    buf = io.BytesIO()
+    fig.savefig(buf, dpi=DPI, bbox_inches="tight",
+                facecolor=fig.get_facecolor(), format="png")
     plt.close(fig)
-    log.info("Map saved: %s", OUTPUT_MAP)
+    buf.seek(0)
+    from PIL import Image as PilImage
+    img = PilImage.open(buf).convert("RGB")
+    img.save(str(OUTPUT_MAP), "JPEG", quality=92, optimize=True)
+    log.info("Map saved: %s  (%.1f KB)", OUTPUT_MAP,
+             OUTPUT_MAP.stat().st_size / 1024)
 
 
 if __name__ == "__main__":
