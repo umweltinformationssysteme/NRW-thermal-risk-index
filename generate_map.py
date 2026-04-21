@@ -70,12 +70,19 @@ LEGEND_GROUPS: list[tuple[str, str, str, str]] = [
 
 
 def classify_colour(temp_c) -> str:
-    if temp_c is None or (isinstance(temp_c, float) and np.isnan(temp_c)):
+    """Map perceived temperature to hex colour. Returns grey for missing data."""
+    try:
+        if temp_c is None:
+            return "#CCCCCC"
+        v = float(temp_c)
+        if np.isnan(v):
+            return "#CCCCCC"
+        for upper, hex_c in COLOUR_STEPS:
+            if v <= upper:
+                return hex_c
+        return "#FD7EFF"
+    except (TypeError, ValueError):
         return "#CCCCCC"
-    for upper, hex_c in COLOUR_STEPS:
-        if float(temp_c) <= upper:
-            return hex_c
-    return "#FD7EFF"
 
 
 def hex_to_rgb(hex_c: str) -> tuple[float, float, float]:
@@ -212,8 +219,17 @@ def render_map(date_str: str, run_str: str) -> None:
     gdf["fill_hex"] = gdf["perceived_temp_c"].apply(classify_colour)
 
     missing = gdf["perceived_temp_c"].isna().sum()
-    if missing:
-        log.warning("%d municipalities have no forecast data (shown grey)", missing)
+    if missing == len(gdf):
+        raise ValueError(
+            f"ALL {missing} municipalities have perceived_temp_c=null.\n"
+            "Check that output/thermal_index_nrw.geojson was written by "
+            "fetch_weather.py with forecast data attached."
+        )
+    elif missing:
+        log.warning("%d/%d municipalities have no forecast data (shown grey)",
+                    missing, len(gdf))
+    else:
+        log.info("All %d municipalities have forecast data ✓", len(gdf))
 
     log.info("GeoJSON: %d municipalities, CRS=%s", len(gdf), gdf.crs)
 
