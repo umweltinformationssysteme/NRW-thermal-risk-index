@@ -31,57 +31,83 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Paths  (all relative to the repo root where this script lives)
+# Paths
 # ---------------------------------------------------------------------------
 REPO_ROOT     = Path(__file__).parent
 CSV_PATH      = REPO_ROOT / "data" / "municipality_nrw.csv"
 OUTPUT_JSON   = REPO_ROOT / "output" / "thermal_index_nrw.json"
+OUTPUT_GEOJSON = REPO_ROOT / "output" / "thermal_index_nrw.geojson"
+GEOJSON_SRC   = REPO_ROOT / "municipality_nrw.geojson"   # polygon boundaries
 README_FILE   = REPO_ROOT / "README.md"
-TEMPLATE_FILE = REPO_ROOT / "README_template.md"   # static header
+TEMPLATE_FILE = REPO_ROOT / "README_template.md"
 
 BASE_URL = "https://opendata.dwd.de/climate_environment/health/forecasts/"
 TOP_N    = 10
 
 # ---------------------------------------------------------------------------
-# DWD thermal classification  (VDI 3787 / Klima-Michel model, 9 levels)
-# Colour values match the official DWD map legend shown in the image.
+# Full 24-step colour scale from the official DWD legend CSV
+# (Legende_Thermischer_Gefahrenindex.CSV)
+# Each entry: (PT upper bound °C, sensation_en, risk_en, hex, text_hex)
 # ---------------------------------------------------------------------------
-THERMAL_CLASSES = [
-    # (PT upper bound °C, thermal sensation, health risk, bg hex, text hex)
-    (-39, "Very cold",      "Very high", "#08306b", "#ffffff"),
-    (-26, "Cold",           "High",      "#2171b5", "#ffffff"),
-    (-13, "Cool",           "Elevated",  "#6baed6", "#000000"),
-    (  0, "Slightly cool",  "Low",       "#c6dbef", "#000000"),
-    ( 20, "Comfortable",    "None",      "#41ab5d", "#000000"),
-    ( 26, "Slightly warm",  "Low",       "#ffffb2", "#000000"),
-    ( 32, "Warm",           "Elevated",  "#fd8d3c", "#000000"),
-    ( 38, "Hot",            "High",      "#e31a1c", "#ffffff"),
-    (999, "Very hot",       "Very high", "#800026", "#ffffff"),
+COLOUR_SCALE = [
+    ( -39, "Very cold",     "Very high", "#011AFD", "#ffffff"),
+    ( -34, "Very cold",     "Very high", "#1967FD", "#ffffff"),
+    ( -30, "Cold",          "High",      "#2F72FF", "#ffffff"),
+    ( -26, "Cold",          "High",      "#3D81FE", "#ffffff"),
+    ( -21, "Cool",          "Elevated",  "#5BA0FD", "#000000"),
+    ( -17, "Cool",          "Elevated",  "#6AAFFD", "#000000"),
+    ( -13, "Cool",          "Elevated",  "#81BEFD", "#000000"),
+    (  -8, "Slightly cool", "Low",       "#A5DAFA", "#000000"),
+    (  -4, "Slightly cool", "Low",       "#B4E6FF", "#000000"),
+    (   0, "Slightly cool", "Low",       "#CAEFFF", "#000000"),
+    (   4, "Comfortable",   "None",      "#8DFF8D", "#000000"),
+    (   8, "Comfortable",   "None",      "#01FE03", "#000000"),
+    (  12, "Comfortable",   "None",      "#00E700", "#000000"),
+    (  16, "Comfortable",   "None",      "#88FF02", "#000000"),
+    (  20, "Comfortable",   "None",      "#C8FF2F", "#000000"),
+    (  23, "Slightly warm", "Low",       "#FFFF7D", "#000000"),
+    (  26, "Slightly warm", "Low",       "#FEE362", "#000000"),
+    (  29, "Warm",          "Elevated",  "#FFAF34", "#000000"),
+    (  32, "Warm",          "Elevated",  "#FD7D1A", "#000000"),
+    (  35, "Hot",           "High",      "#FF3001", "#ffffff"),
+    (  38, "Hot",           "High",      "#E11902", "#ffffff"),
+    (  41, "Very hot",      "Very high", "#AD1AE4", "#ffffff"),
+    (  44, "Very hot",      "Very high", "#E04BFF", "#000000"),
+    ( 999, "Very hot",      "Very high", "#FD7EFF", "#000000"),
+]
+
+# Compact 9-group legend for the README table (one row per sensation)
+LEGEND_GROUPS = [
+    # (sensation, risk, representative_hex, pt_range)
+    ("Very cold",     "Very high", "#1967FD", "≤ −39 °C"),
+    ("Cold",          "High",      "#3D81FE", "−39 to −26 °C"),
+    ("Cool",          "Elevated",  "#81BEFD", "−26 to −13 °C"),
+    ("Slightly cool", "Low",       "#B4E6FF", "−13 to 0 °C"),
+    ("Comfortable",   "None",      "#00E700", "0 to +20 °C"),
+    ("Slightly warm", "Low",       "#FEE362", "+20 to +26 °C"),
+    ("Warm",          "Elevated",  "#FD7D1A", "+26 to +32 °C"),
+    ("Hot",           "High",      "#E11902", "+32 to +38 °C"),
+    ("Very hot",      "Very high", "#E04BFF", "≥ +38 °C"),
 ]
 
 def classify(temp_c: float) -> dict:
-    for upper, sensation, risk, bg, fg in THERMAL_CLASSES:
+    for upper, sensation, risk, bg, fg in COLOUR_SCALE:
         if temp_c <= upper:
             return {"sensation": sensation, "risk": risk,
                     "bg_color": bg, "fg_color": fg}
     return {"sensation": "Unknown", "risk": "–",
             "bg_color": "#cccccc", "fg_color": "#000000"}
 
-def temp_icon(t: float) -> str:
-    if t >= 38:  return "🟣"
-    if t >= 32:  return "🔴"
-    if t >= 26:  return "🟠"
-    if t >= 20:  return "🟡"
-    if t >=  0:  return "🟢"
-    if t >= -13: return "🔵"
-    return "🔷"
+def badge(hex_bg: str) -> str:
+    """Colour square badge via placehold.co — same style as NRW Ozone project."""
+    c = hex_bg.lstrip("#")
+    return f"![](https://placehold.co/14x14/{c}/{c}.png)"
 
 def to_celsius(v: float) -> float:
-    """Convert Kelvin → Celsius if needed (threshold > 100)."""
     return v - 273.15 if v > 100 else v
 
 # ---------------------------------------------------------------------------
-# DWD directory scan → latest GFT file URL
+# DWD directory → latest GFT URL
 # ---------------------------------------------------------------------------
 def get_latest_gft_url() -> str:
     log.info("Scanning DWD directory: %s", BASE_URL)
@@ -96,7 +122,7 @@ def get_latest_gft_url() -> str:
     return url
 
 # ---------------------------------------------------------------------------
-# Filename → model run time and validity start
+# Parse model run and validity time from filename
 # ---------------------------------------------------------------------------
 def parse_filename(url: str):
     fname = url.split("/")[-1]
@@ -122,7 +148,7 @@ def download(url: str, dest: Path) -> None:
     log.info("  → %.1f MB saved", dest.stat().st_size / 1e6)
 
 # ---------------------------------------------------------------------------
-# Open GRIB2 file
+# Open GRIB2
 # ---------------------------------------------------------------------------
 def open_grib(path: Path) -> xr.Dataset:
     try:
@@ -138,7 +164,6 @@ def open_grib(path: Path) -> xr.Dataset:
     return datasets[0]
 
 def find_var(ds: xr.Dataset) -> str:
-    # PT1M is the real DWD variable name for perceived temperature
     for c in ("PT1M", "PT", "t2m", "2t", "pt", "perceived_temperature"):
         if c in ds.data_vars:
             return c
@@ -148,29 +173,23 @@ def find_var(ds: xr.Dataset) -> str:
     return first
 
 # ---------------------------------------------------------------------------
-# Vectorised municipality processing via KD-Tree
-# (replaces 396× xr.sel() → ~100× faster)
+# Vectorised processing via KD-Tree  (~100× faster than 396× xr.sel)
 # ---------------------------------------------------------------------------
 def process(ds: xr.Dataset, df: pd.DataFrame,
             dates: dict[str, datetime.date]) -> list[dict]:
-    """
-    Build a KD-Tree over the GRIB2 grid, find the nearest grid point for every
-    municipality in a single query, then extract daily maxima via NumPy slicing.
-    """
+
     var = find_var(ds)
     log.info("Using variable '%s'", var)
 
-    # Build KD-Tree over grid points
-    # latitude/longitude can be 1-D vectors or 2-D arrays (curvilinear grids).
+    # --- KD-Tree: handle 1-D and 2-D coordinate arrays ---
     lat_vals = ds.latitude.values
     lon_vals = ds.longitude.values
     if lat_vals.ndim == 1 and lon_vals.ndim == 1:
-        # 1-D axes → build full meshgrid, then flatten
         lon_2d, lat_2d = np.meshgrid(lon_vals, lat_vals)
         grid_lat = lat_2d.ravel()
         grid_lon = lon_2d.ravel()
     else:
-        # Already 2-D (e.g. 657 x 1377) → flatten both together
+        # 2-D curvilinear grid (e.g. DWD ICON-EU: 657 × 1377)
         grid_lat = lat_vals.ravel()
         grid_lon = lon_vals.ravel()
 
@@ -179,7 +198,7 @@ def process(ds: xr.Dataset, df: pd.DataFrame,
     log.info("KD-Tree: %d grid points, %d municipalities mapped",
              len(grid_lat), len(df))
 
-    # Time axis
+    # --- Time axis ---
     tc = next((c for c in ("valid_time", "time") if c in ds.coords), None)
     if tc is None:
         log.error("No time coordinate found in dataset.")
@@ -187,7 +206,7 @@ def process(ds: xr.Dataset, df: pd.DataFrame,
     times = pd.to_datetime(ds[tc].values)
     is_scalar = times.ndim == 0
 
-    # Flatten raw data to (time × grid)
+    # --- Flatten raw data to (time × grid) ---
     raw = ds[var].values
     if is_scalar:
         flat  = raw.ravel()[np.newaxis, :]
@@ -200,11 +219,9 @@ def process(ds: xr.Dataset, df: pd.DataFrame,
         flat = raw.reshape(1, -1)
     log.info("Data shape after flattening: %s (timesteps × grid points)", flat.shape)
 
-    # Pre-compute date masks for all forecast days
-    date_masks = {
-        key: np.array([t.date() == d for t in times])
-        for key, d in dates.items()
-    }
+    # Pre-compute date masks
+    date_masks = {k: np.array([t.date() == d for t in times])
+                  for k, d in dates.items()}
 
     out = []
     for i, row in df.iterrows():
@@ -221,7 +238,6 @@ def process(ds: xr.Dataset, df: pd.DataFrame,
                 continue
             t = to_celsius(float(np.max(vals)))
             forecasts[key] = {"perceived_temp_c": round(t, 1), **classify(t)}
-
         out.append({"name": row["name"], "lat": row["lat"],
                     "lon": row["lon"], "forecasts": forecasts})
 
@@ -229,37 +245,26 @@ def process(ds: xr.Dataset, df: pd.DataFrame,
     return out
 
 # ---------------------------------------------------------------------------
-# README table  (style matches the NRW Ozone project)
+# README table  — same style as NRW Ozone project
 # ---------------------------------------------------------------------------
-COLOUR_SCALE = [
-    ("🔷", "≤ −39 °C",       "Very cold",    "Very high"),
-    ("🔵", "−39 to −26 °C",  "Cold",         "High"),
-    ("🔵", "−26 to −13 °C",  "Cool",         "Elevated"),
-    ("🔵", "−13 to 0 °C",    "Slightly cool","Low"),
-    ("🟢", "0 to +20 °C",    "Comfortable",  "None"),
-    ("🟡", "+20 to +26 °C",  "Slightly warm","Low"),
-    ("🟠", "+26 to +32 °C",  "Warm",         "Elevated"),
-    ("🔴", "+32 to +38 °C",  "Hot",          "High"),
-    ("🟣", "≥ +38 °C",       "Very hot",     "Very high"),
-]
-
 def build_table(results: list[dict], dates: dict,
                 run_dt: datetime.datetime) -> str:
+
     top = sorted(
         results,
         key=lambda r: -(r["forecasts"].get("today") or {}).get("perceived_temp_c", -999)
     )[:TOP_N]
 
-    def fmt(d):
+    def fmt_temp(d):
         if d is None:
             return "–"
-        return f"{temp_icon(d['perceived_temp_c'])} {d['perceived_temp_c']:.1f} °C"
+        return f"{d['perceived_temp_c']:.1f} °C"
 
-    run_str   = run_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-    date_str  = dates["today"].strftime("%Y-%m-%d")
-    d_today   = dates["today"].strftime("%Y-%m-%d")
-    d_tom     = dates["tomorrow"].strftime("%Y-%m-%d")
-    d_dat     = dates["day_after_tomorrow"].strftime("%Y-%m-%d")
+    run_str  = run_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    date_str = dates["today"].strftime("%Y-%m-%d")
+    d_today  = dates["today"].strftime("%Y-%m-%d")
+    d_tom    = dates["tomorrow"].strftime("%Y-%m-%d")
+    d_dat    = dates["day_after_tomorrow"].strftime("%Y-%m-%d")
 
     lines = [
         "<!-- THERMAL_TABLE_START -->",
@@ -268,19 +273,25 @@ def build_table(results: list[dict], dates: dict,
         "",
         f"*Forecast base: {run_dt.strftime('%Y-%m-%d %H:%M')} UTC · Generated: {run_str}*",
         "",
-        f"| | Municipality | Today ({d_today}) | Tomorrow ({d_tom}) | Day after ({d_dat}) | Health risk |",
-        "|-|-------------|-------------------|-------------------|---------------------|-------------|",
+        f"|   | Municipality | Today ({d_today}) | Tomorrow ({d_tom}) | Day after ({d_dat}) | Health risk |",
+        "|:---:|:---|:---|:---|:---|:---|",
     ]
+
     for i, r in enumerate(top, 1):
         fh = r["forecasts"].get("today")
         fm = r["forecasts"].get("tomorrow")
         fu = r["forecasts"].get("day_after_tomorrow")
+
+        def cell(d):
+            if d is None:
+                return "–"
+            b = badge(d["bg_color"])
+            return f"{b} **{d['perceived_temp_c']:.1f} °C** · {d['sensation']}"
+
         risk = fh["risk"] if fh else "–"
+        b_today = badge(fh["bg_color"]) if fh else ""
         lines.append(
-            f"| {i} | **{r['name']}** | {fmt(fh)} · {fh['sensation'] if fh else '–'} "
-            f"| {fmt(fm)} · {fm['sensation'] if fm else '–'} "
-            f"| {fmt(fu)} · {fu['sensation'] if fu else '–'} "
-            f"| {risk} |"
+            f"| {b_today} | **{r['name']}** | {cell(fh)} | {cell(fm)} | {cell(fu)} | {risk} |"
         )
 
     lines += [
@@ -288,38 +299,68 @@ def build_table(results: list[dict], dates: dict,
         "### Colour scale",
         "",
         "| Colour | Perceived temperature | Thermal sensation | Health risk |",
-        "|--------|----------------------|-------------------|-------------|",
+        "|:------:|----------------------|-------------------|-------------|",
     ]
-    for row in COLOUR_SCALE:
-        lines.append(f"| {row[0]} | {row[1]} | {row[2]} | {row[3]} |")
-
-    lines += ["", "---", "", "<!-- THERMAL_TABLE_END -->"]
+    for sensation, risk, hex_c, pt_range in LEGEND_GROUPS:
+        lines.append(f"| {badge(hex_c)} | {pt_range} | {sensation} | {risk} |")
+    lines += ["", "<!-- THERMAL_TABLE_END -->"]
     return "\n".join(lines)
 
 def update_readme(table: str) -> None:
     START = "<!-- THERMAL_TABLE_START -->"
     END   = "<!-- THERMAL_TABLE_END -->"
-
-    base = (TEMPLATE_FILE if TEMPLATE_FILE.exists() else README_FILE)
-    base = base.read_text("utf-8") if base.exists() else "# NRW Thermal Risk Index\n\n"
-
+    src   = TEMPLATE_FILE if TEMPLATE_FILE.exists() else README_FILE
+    base  = src.read_text("utf-8") if src.exists() else "# NRW Thermal Risk Index\n\n"
     if START in base and END in base:
         content = base[:base.index(START)] + table + base[base.index(END) + len(END):]
     else:
         content = base.rstrip("\n") + "\n\n" + table + "\n"
-
     README_FILE.write_text(content, "utf-8")
     log.info("README.md updated")
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+def export_geojson(results: list[dict], dates: dict) -> None:
+    """
+    Merge perceived-temperature forecast into the municipality polygon GeoJSON
+    and write to output/thermal_index_nrw.geojson for map rendering and download.
+    """
+    import json as _json
+
+    if not GEOJSON_SRC.exists():
+        log.warning("municipality_nrw.geojson not found – skipping GeoJSON export")
+        return
+
+    with open(GEOJSON_SRC, encoding="utf-8") as f:
+        geo = _json.load(f)
+
+    # Build lookup: name → today's forecast
+    lookup = {r["name"]: r["forecasts"] for r in results}
+
+    for feat in geo.get("features", []):
+        name = feat.get("properties", {}).get("name", "")
+        fc   = lookup.get(name, {})
+        today = fc.get("today") or {}
+        feat["properties"]["perceived_temp_c"] = today.get("perceived_temp_c")
+        feat["properties"]["sensation"]        = today.get("sensation")
+        feat["properties"]["risk"]             = today.get("risk")
+        feat["properties"]["bg_color"]         = today.get("bg_color")
+        feat["properties"]["forecast_today"]   = fc.get("today")
+        feat["properties"]["forecast_tomorrow"]        = fc.get("tomorrow")
+        feat["properties"]["forecast_day_after_tomorrow"] = fc.get("day_after_tomorrow")
+
+    OUTPUT_GEOJSON.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_GEOJSON.write_text(
+        _json.dumps(geo, ensure_ascii=False, separators=(",", ":")), "utf-8")
+    log.info("GeoJSON saved: %s", OUTPUT_GEOJSON)
+
+
 def main() -> None:
     try:
         url = get_latest_gft_url()
     except Exception as e:
-        log.error("URL discovery failed: %s", e)
-        sys.exit(1)
+        log.error("URL discovery failed: %s", e); sys.exit(1)
 
     run_dt, valid_dt = parse_filename(url)
     log.info("Model run:      %s UTC", run_dt)
@@ -327,32 +368,29 @@ def main() -> None:
 
     ref = (run_dt or datetime.datetime.now(datetime.timezone.utc)).date()
     dates = {
-        "today":               ref,
-        "tomorrow":            ref + datetime.timedelta(days=1),
-        "day_after_tomorrow":  ref + datetime.timedelta(days=2),
+        "today":              ref,
+        "tomorrow":           ref + datetime.timedelta(days=1),
+        "day_after_tomorrow": ref + datetime.timedelta(days=2),
     }
     log.info("Forecast dates: %s", dates)
 
     tmp = Path(tempfile.mktemp(suffix=".grib2"))
     try:
         download(url, tmp)
-
         log.info("Opening GRIB2 file …")
         ds = open_grib(tmp)
         log.info("Variables: %s  |  Coordinates: %s",
                  list(ds.data_vars), list(ds.coords))
 
         if not CSV_PATH.exists():
-            log.error("Municipality CSV not found: %s", CSV_PATH)
-            sys.exit(1)
+            log.error("Municipality CSV not found: %s", CSV_PATH); sys.exit(1)
         df = pd.read_csv(CSV_PATH)
         log.info("%d municipalities loaded", len(df))
 
         results = process(ds, df, dates)
 
-        # Save JSON
         OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
-        payload = {
+        OUTPUT_JSON.write_text(json.dumps({
             "generated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "model_run_utc":    run_dt.isoformat() if run_dt else None,
             "valid_start_utc":  valid_dt.isoformat() if valid_dt else None,
@@ -360,21 +398,28 @@ def main() -> None:
             "data_source":      "DWD OpenData – Health Forecasts (ICON-EU-Nest, GRIB2)",
             "classification":   "VDI 3787 Part 2 / DWD Klima-Michel model",
             "municipalities":   results,
-        }
-        OUTPUT_JSON.write_text(
-            json.dumps(payload, indent=2, ensure_ascii=False), "utf-8")
+        }, indent=2, ensure_ascii=False), "utf-8")
         log.info("JSON saved: %s", OUTPUT_JSON)
 
-        # Update README
+        # GeoJSON export (municipality polygons + forecast attributes)
+        export_geojson(results, dates)
+
+        # Map rendering
+        try:
+            from generate_map import render_map
+            date_str = dates["today"].strftime("%Y-%m-%d")
+            run_str  = (run_dt or datetime.datetime.now(datetime.timezone.utc)).isoformat()
+            render_map(date_str, run_str)
+        except Exception as e:
+            log.error("Map rendering failed: %s", e)
+
         update_readme(build_table(
             results, dates,
             run_dt or datetime.datetime.now(datetime.timezone.utc)))
-
     finally:
         tmp.unlink(missing_ok=True)
 
     log.info("Done — %d municipalities updated", len(results))
-
 
 if __name__ == "__main__":
     main()
