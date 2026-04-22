@@ -375,10 +375,29 @@ def export_geojson(results: list[dict], dates: dict) -> None:
         matched = joined["perceived_temp_c"].notna().sum()
         log.info("Nearest join: %d/%d matched", matched, len(joined))
 
-    # Write output GeoJSON
+    # Drop columns that are not JSON-serializable (e.g. Timestamps from sjoin)
+    for col in list(joined.columns):
+        if col == "geometry":
+            continue
+        try:
+            import json as _test_json
+            _test_json.dumps(joined[col].iloc[0] if len(joined) else None,
+                             default=str)
+        except Exception:
+            pass
+        # Convert any datetime/Timestamp columns to ISO strings
+        if hasattr(joined[col], "dt") or str(joined[col].dtype).startswith(
+                ("datetime", "timedelta")):
+            joined[col] = joined[col].astype(str)
+
+    # Also drop the sjoin index column which can cause issues
+    for drop_col in ("index_right", "index_left"):
+        if drop_col in joined.columns:
+            joined = joined.drop(columns=[drop_col])
+
     OUTPUT_GEOJSON.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_GEOJSON.write_text(
-        joined.to_json(ensure_ascii=False), "utf-8")
+    # Use fiona/pyogrio writer to avoid JSON serialisation issues with mixed types
+    joined.to_file(str(OUTPUT_GEOJSON), driver="GeoJSON")
     log.info("GeoJSON saved: %s  (%d features, %d with forecast data)",
              OUTPUT_GEOJSON, len(joined), matched)
 
