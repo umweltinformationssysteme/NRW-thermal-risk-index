@@ -266,8 +266,20 @@ def build_table(results: list[dict], dates: dict,
     d_tom    = dates["tomorrow"].strftime("%Y-%m-%d")
     d_dat    = dates["day_after_tomorrow"].strftime("%Y-%m-%d")
 
+    # Cache-busting: append epoch seconds so GitHub always fetches the latest image
+    import time
+    cache_bust = int(time.time())
+    repo_url = "https://github.com/umweltinformationssysteme/NRW-thermal-risk-index"
+    map_url  = (f"{repo_url}/raw/main/output/thermal-risk-map-nrw-today.jpg"
+                f"?{cache_bust}")
+    map_link = (f"{repo_url}/blob/main/output/thermal-risk-map-nrw-today.jpg")
+
     lines = [
         "<!-- THERMAL_TABLE_START -->",
+        "",
+        f"[![NRW Thermal Risk Map]({map_url})]({map_link})",
+        "",
+        "---",
         "",
         f"## Top 10 — Highest Perceived Temperatures Today ({date_str})",
         "",
