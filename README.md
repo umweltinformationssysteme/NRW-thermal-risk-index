@@ -6,7 +6,47 @@ Data source: [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate
 ---
 
 <!-- THERMAL_TABLE_START -->
+
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1776839214)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
+
+---
+
+## Top 10 — Highest Perceived Temperatures Today (2026-04-22)
+
+*Forecast base: 2026-04-22 03:29 UTC · Generated: 2026-04-22T03:29:27Z*
+
+|   | Municipality | Today (2026-04-22) | Tomorrow (2026-04-23) | Day after (2026-04-24) | Health risk |
+|:---:|:---|:---|:---|:---|:---|
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Köln** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.0 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.8 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Leverkusen** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.9 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.6 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.8 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Frechen** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.9 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.4 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.6 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Pulheim** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.9 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.2 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.6 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Monheim am Rhein** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.4 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.8 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Hürth** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.6 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.6 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Bergisch Gladbach** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.6 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.4 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Rösrath** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.9 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.3 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Niederkassel** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.4 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Dormagen** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.7 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.2 °C** · Comfortable | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.8 °C** · Comfortable | None |
+
+### Colour scale
+
+| Colour | Perceived temperature | Thermal sensation | Health risk |
+|:------:|----------------------|-------------------|-------------|
+| ![](https://placehold.co/14x14/1967FD/1967FD.png) | ≤ −39 °C | Very cold | Very high |
+| ![](https://placehold.co/14x14/3D81FE/3D81FE.png) | −39 to −26 °C | Cold | High |
+| ![](https://placehold.co/14x14/81BEFD/81BEFD.png) | −26 to −13 °C | Cool | Elevated |
+| ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) | −13 to 0 °C | Slightly cool | Low |
+| ![](https://placehold.co/14x14/00E700/00E700.png) | 0 to +20 °C | Comfortable | None |
+| ![](https://placehold.co/14x14/FEE362/FEE362.png) | +20 to +26 °C | Slightly warm | Low |
+| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | +26 to +32 °C | Warm | Elevated |
+| ![](https://placehold.co/14x14/E11902/E11902.png) | +32 to +38 °C | Hot | High |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | ≥ +38 °C | Very hot | Very high |
+
 <!-- THERMAL_TABLE_END -->
+
+---
+
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
 
 ---
 
@@ -20,7 +60,7 @@ A GitHub Actions workflow runs every morning at **09:00 UTC**. You can trigger a
 4. Classifies each value according to the 24-step DWD colour scale (VDI 3787 Part 2).
 5. Exports a GeoJSON file with forecast attributes attached to each municipality polygon.
 6. Renders a choropleth map (`output/thermal-risk-map-nrw-today.jpg`) using the municipality polygons coloured by perceived temperature, overlaid on a Sentinel-2 background.
-7. Updates the Top-10 table and the map in this README.
+7. Updates the Top-10 table in this README.
 8. Writes full results to `output/thermal_index_nrw.json` and pushes everything back to this repository.
 
 ---
@@ -33,11 +73,14 @@ A GitHub Actions workflow runs every morning at **09:00 UTC**. You can trigger a
 {
   "generated_at_utc": "2026-04-20T09:12:34Z",
   "model_run_utc": "2026-04-20T03:22:07Z",
+  "valid_start_utc": "2026-04-20T00:00:00Z",
   "forecast_dates": {
     "today": "2026-04-20",
     "tomorrow": "2026-04-21",
     "day_after_tomorrow": "2026-04-22"
   },
+  "data_source": "DWD OpenData – Health Forecasts (ICON-EU-Nest, GRIB2)",
+  "classification": "VDI 3787 Part 2 / DWD Klima-Michel model",
   "municipalities": [
     {
       "name": "Köln",
@@ -50,7 +93,12 @@ A GitHub Actions workflow runs every morning at **09:00 UTC**. You can trigger a
           "risk": "Low",
           "bg_color": "#FEE362"
         },
-        "tomorrow": { "perceived_temp_c": 18.1, "sensation": "Comfortable", "risk": "None" },
+        "tomorrow": {
+          "perceived_temp_c": 18.1,
+          "sensation": "Comfortable",
+          "risk": "None",
+          "bg_color": "#00E700"
+        },
         "day_after_tomorrow": null
       }
     }
@@ -59,6 +107,8 @@ A GitHub Actions workflow runs every morning at **09:00 UTC**. You can trigger a
 ```
 
 `output/thermal_index_nrw.geojson` — same data merged into municipality polygon geometries for direct use in GIS tools or web maps.
+
+`perceived_temp_c` is `null` when no forecast data is available for that day.
 
 ---
 
@@ -80,7 +130,7 @@ NRW-thermal-risk-index/
 ├── municipality_nrw.geojson             ← NRW municipality polygon boundaries (BKG)
 ├── background.tiff                      ← Sentinel-2 georeferenced background
 ├── requirements.txt
-├── README_template.md                   ← static sections (do not edit the block above)
+├── README_template.md                   ← static header (do not edit the table below)
 └── README.md                            ← auto-generated daily
 ```
 
@@ -88,16 +138,20 @@ NRW-thermal-risk-index/
 
 ## Licenses and Data Sources
 
+This project is based on open data and requires the following attribution for any further use:
+
 ### 1. Meteorological Data (Perceived Temperature)
+The perceived temperature forecast values are provided by the **German Meteorological Service (DWD)**.
 - **Data source:** [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate_environment/health/forecasts/)
 - **Model:** ICON-EU-Nest · Variable: `PT1M` (Perceived Temperature)
-- **License:** [DWD Open Data License](https://www.dwd.de/EN/service/copyright/copyright_node.html)
+- **License:** [DWD Open Data License](https://www.dwd.de/EN/service/copyright/copyright_node.html) (free of charge, attribution required)
 - **Attribution:** *Contains data from Deutscher Wetterdienst (DWD), OpenData.*
 
 ### 2. Classification
-The thermal classification follows the **DWD Klima-Michel model** (Staiger et al., 2012) and VDI guideline 3787 Part 2. The perceived temperature integrates air temperature, wind speed, humidity and solar radiation into a single biometeorological index.
+The thermal classification follows the **DWD Klima-Michel model** (Staiger et al., 2012) and VDI guideline 3787 Part 2. The perceived temperature integrates air temperature, wind speed, humidity and solar radiation into a single biometeorological index representing the physiological heat load on the human body.
 
-### 3. Administrative Boundaries
+### 3. Administrative Boundaries (Municipalities)
+The municipality polygon boundaries and centroids are based on data from the Federal Agency for Cartography and Geodesy (BKG).
 - **Data source:** © GeoBasis-DE / BKG (data modified).
 
 ### 4. Satellite Background
@@ -109,6 +163,7 @@ The thermal classification follows the **DWD Klima-Michel model** (Staiger et al
 ## Notes
 
 - The DWD GRIB2 file is updated once per day (model run ~03:00–04:00 UTC).
-- All timestamps are in **UTC**.
-- The ICON-EU-Nest grid resolution is approximately **2 × 2 km**.
-- `perceived_temp_c` is `null` when no forecast data is available for that day.
+- All timestamps in the output are in **UTC**.
+- The ICON-EU-Nest grid has a resolution of approximately **2 × 2 km** over Germany.
+- Municipalities within the same grid cell will share the same perceived temperature value.
+- `perceived_temp_c` is `null` when no forecast data is available for that day (beyond the forecast window).
