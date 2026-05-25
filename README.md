@@ -7,26 +7,26 @@ Data source: [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate
 
 <!-- THERMAL_TABLE_START -->
 
-[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1779619375)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1779712275)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
 
 ---
 
-## Top 10 — Highest Perceived Temperatures Today (2026-05-24)
+## Top 10 — Highest Perceived Temperatures Today (2026-05-25)
 
-*Forecast base: 2026-05-24 03:21 UTC · Generated: 2026-05-24T03:21:45Z*
+*Forecast base: 2026-05-25 03:25 UTC · Generated: 2026-05-25T03:25:12Z*
 
-|   | Municipality | Today (2026-05-24) | Tomorrow (2026-05-25) | Day after (2026-05-26) | Health risk |
+|   | Municipality | Today (2026-05-25) | Tomorrow (2026-05-26) | Day after (2026-05-27) | Health risk |
 |:---:|:---|:---|:---|:---|:---|
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Bonn** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.1 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.4 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.0 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Lohmar** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.1 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.6 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.8 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Siegburg** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.1 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.6 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.8 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Troisdorf** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.1 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.6 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.8 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Wesseling** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.7 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.9 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Gangelt** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.0 °C** · Warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.5 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Geilenkirchen** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.0 °C** · Warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.0 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Selfkant** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.0 °C** · Warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.1 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.9 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Übach-Palenberg** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.0 °C** · Warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.0 °C** · Warm | Elevated |
-| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Niederkassel** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.8 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **30.8 °C** · Warm | Elevated |
+| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Wesseling** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.1 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.9 °C** · Warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **26.2 °C** · Warm | Elevated |
+| ![](https://placehold.co/14x14/FFAF34/FFAF34.png) | **Dormagen** | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **29.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.6 °C** · Warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **25.0 °C** · Slightly warm | Elevated |
+| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Köln** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.7 °C** · Warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **25.9 °C** · Slightly warm | Elevated |
+| ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) | **Brühl** | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.0 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.6 °C** · Warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **25.7 °C** · Slightly warm | Elevated |
+| ![](https://placehold.co/14x14/FFAF34/FFAF34.png) | **Monheim am Rhein** | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.9 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.3 °C** · Warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **25.1 °C** · Slightly warm | Elevated |
+| ![](https://placehold.co/14x14/FFAF34/FFAF34.png) | **Bonn** | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.9 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.4 °C** · Warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **26.7 °C** · Warm | Elevated |
+| ![](https://placehold.co/14x14/FFAF34/FFAF34.png) | **Leverkusen** | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.9 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.0 °C** · Warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **25.1 °C** · Slightly warm | Elevated |
+| ![](https://placehold.co/14x14/FFAF34/FFAF34.png) | **Niederkassel** | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.9 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.8 °C** · Warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **26.3 °C** · Warm | Elevated |
+| ![](https://placehold.co/14x14/FFAF34/FFAF34.png) | **Langenfeld (Rhld.)** | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.8 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.1 °C** · Warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **24.5 °C** · Slightly warm | Elevated |
+| ![](https://placehold.co/14x14/FFAF34/FFAF34.png) | **Erftstadt** | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.8 °C** · Warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **31.4 °C** · Warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **25.4 °C** · Slightly warm | Elevated |
 
 ### Colour scale
 
