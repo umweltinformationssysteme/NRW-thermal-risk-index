@@ -7,26 +7,26 @@ Data source: [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate
 
 <!-- THERMAL_TABLE_START -->
 
-[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1780661347)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1780743283)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
 
 ---
 
-## Top 10 — Highest Perceived Temperatures Today (2026-06-05)
+## Top 10 — Highest Perceived Temperatures Today (2026-06-06)
 
-*Forecast base: 2026-06-05 03:24 UTC · Generated: 2026-06-05T03:24:59Z*
+*Forecast base: 2026-06-06 03:21 UTC · Generated: 2026-06-06T03:21:46Z*
 
-|   | Municipality | Today (2026-06-05) | Tomorrow (2026-06-06) | Day after (2026-06-07) | Health risk |
+|   | Municipality | Today (2026-06-06) | Tomorrow (2026-06-07) | Day after (2026-06-08) | Health risk |
 |:---:|:---|:---|:---|:---|:---|
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Königswinter** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.1 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.1 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.9 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Köln** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.0 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.4 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Brühl** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.0 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.3 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Hürth** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.0 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.2 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Erftstadt** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.6 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.9 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.2 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Wesseling** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.6 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.1 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.7 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Sankt Augustin** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.6 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.1 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.9 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Weilerswist** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.5 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.6 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.2 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Bonn** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.3 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.6 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **19.2 °C** · Comfortable | None |
-| ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) | **Alfter** | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **17.3 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **16.8 °C** · Comfortable | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **18.5 °C** · Comfortable | None |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Porta Westfalica** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **21.0 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.4 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.9 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Stemwede** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **21.0 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.6 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.9 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Minden** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.9 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.5 °C** · Comfortable | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.1 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Espelkamp** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.6 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.5 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **23.0 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Hille** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.6 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.1 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.8 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Rahden** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.6 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.7 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.8 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Petershagen** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.5 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.5 °C** · Comfortable | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.1 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Preußisch Oldendorf** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.3 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.3 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **23.0 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Vlotho** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.1 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **14.8 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.7 °C** · Slightly warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Lübbecke** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **20.1 °C** · Slightly warm | ![](https://placehold.co/14x14/88FF02/88FF02.png) **15.2 °C** · Comfortable | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.9 °C** · Slightly warm | Low |
 
 ### Colour scale
 
