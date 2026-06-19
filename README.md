@@ -7,26 +7,26 @@ Data source: [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate
 
 <!-- THERMAL_TABLE_START -->
 
-[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1781785602)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1781860359)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
 
 ---
 
-## Top 10 — Highest Perceived Temperatures Today (2026-06-18)
+## Top 10 — Highest Perceived Temperatures Today (2026-06-19)
 
-*Forecast base: 2026-06-18 03:24 UTC · Generated: 2026-06-18T03:24:56Z*
+*Forecast base: 2026-06-19 03:25 UTC · Generated: 2026-06-19T03:25:07Z*
 
-|   | Municipality | Today (2026-06-18) | Tomorrow (2026-06-19) | Day after (2026-06-20) | Health risk |
+|   | Municipality | Today (2026-06-19) | Tomorrow (2026-06-20) | Day after (2026-06-21) | Health risk |
 |:---:|:---|:---|:---|:---|:---|
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Grevenbroich** | ![](https://placehold.co/14x14/E11902/E11902.png) **36.4 °C** · Hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.3 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **35.9 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Jüchen** | ![](https://placehold.co/14x14/E11902/E11902.png) **36.3 °C** · Hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.6 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **35.7 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Bedburg** | ![](https://placehold.co/14x14/E11902/E11902.png) **36.3 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.9 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **35.9 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Rommerskirchen** | ![](https://placehold.co/14x14/E11902/E11902.png) **36.2 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.7 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **36.2 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Linnich** | ![](https://placehold.co/14x14/E11902/E11902.png) **36.1 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.0 °C** · Hot | ![](https://placehold.co/14x14/FF3001/FF3001.png) **34.6 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Titz** | ![](https://placehold.co/14x14/E11902/E11902.png) **36.0 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.6 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **35.3 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Jülich** | ![](https://placehold.co/14x14/E11902/E11902.png) **35.9 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **36.9 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **35.1 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Korschenbroich** | ![](https://placehold.co/14x14/E11902/E11902.png) **35.8 °C** · Hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.7 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **35.5 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Aldenhoven** | ![](https://placehold.co/14x14/E11902/E11902.png) **35.8 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **36.4 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **35.1 °C** · Hot | High |
-| ![](https://placehold.co/14x14/E11902/E11902.png) | **Elsdorf** | ![](https://placehold.co/14x14/E11902/E11902.png) **35.8 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.5 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **36.1 °C** · Hot | High |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Jüchen** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.7 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.6 °C** · Hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Mönchengladbach** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.6 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.9 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.3 °C** · Hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Korschenbroich** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.6 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.1 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.4 °C** · Hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Rommerskirchen** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.6 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.5 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.9 °C** · Very hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Grevenbroich** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.4 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Neuss** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.4 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.4 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Dormagen** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.3 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.6 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **39.2 °C** · Very hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Viersen** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.3 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.7 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **36.9 °C** · Hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Grefrath** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.5 °C** · Hot | ![](https://placehold.co/14x14/E11902/E11902.png) **36.5 °C** · Hot | Very high |
+| ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) | **Willich** | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.1 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.5 °C** · Hot | Very high |
 
 ### Colour scale
 
