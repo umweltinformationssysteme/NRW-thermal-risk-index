@@ -7,26 +7,26 @@ Data source: [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate
 
 <!-- THERMAL_TABLE_START -->
 
-[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1782474330)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1782557930)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
 
 ---
 
-## Top 10 — Highest Perceived Temperatures Today (2026-06-26)
+## Top 10 — Highest Perceived Temperatures Today (2026-06-27)
 
-*Forecast base: 2026-06-26 03:25 UTC · Generated: 2026-06-26T03:25:26Z*
+*Forecast base: 2026-06-27 03:25 UTC · Generated: 2026-06-27T03:25:12Z*
 
-|   | Municipality | Today (2026-06-26) | Tomorrow (2026-06-27) | Day after (2026-06-28) | Health risk |
+|   | Municipality | Today (2026-06-27) | Tomorrow (2026-06-28) | Day after (2026-06-29) | Health risk |
 |:---:|:---|:---|:---|:---|:---|
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Gangelt** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.8 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **42.4 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Waldfeucht** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.6 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **42.1 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.0 °C** · Very hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Baesweiler** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.5 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.5 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.9 °C** · Hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Geilenkirchen** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.5 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.2 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.9 °C** · Hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Heinsberg** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.5 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **42.6 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.8 °C** · Hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Selfkant** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.5 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.8 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Übach-Palenberg** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.5 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.2 °C** · Very hot | ![](https://placehold.co/14x14/E11902/E11902.png) **37.9 °C** · Hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Linnich** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.4 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.6 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Aldenhoven** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.1 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.3 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.7 °C** · Very hot | Very high |
-| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Jülich** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **41.1 °C** · Very hot | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.3 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.8 °C** · Very hot | Very high |
+| ![](https://placehold.co/14x14/FD7EFF/FD7EFF.png) | **Sassenberg** | ![](https://placehold.co/14x14/FD7EFF/FD7EFF.png) **44.0 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.8 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.5 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Beelen** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.9 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.8 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.3 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Everswinkel** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.9 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **39.2 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.7 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Warendorf** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.9 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **39.0 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.6 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Versmold** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.9 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.5 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.5 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Telgte** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.7 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.9 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.9 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Ostbevern** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.6 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.8 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **29.0 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Lienen** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.5 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **38.2 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.4 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Sendenhorst** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.5 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **39.1 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.5 °C** · Warm | Very high |
+| ![](https://placehold.co/14x14/E04BFF/E04BFF.png) | **Harsewinkel** | ![](https://placehold.co/14x14/E04BFF/E04BFF.png) **43.4 °C** · Very hot | ![](https://placehold.co/14x14/AD1AE4/AD1AE4.png) **39.0 °C** · Very hot | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.6 °C** · Warm | Very high |
 
 ### Colour scale
 
