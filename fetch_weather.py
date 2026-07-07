@@ -76,18 +76,34 @@ COLOUR_SCALE = [
     ( 999, "Very hot",      "Very high", "#FD7EFF", "#000000"),
 ]
 
-# Compact 9-group legend for the README table (one row per sensation)
+# Full 24-row legend for the README — one row per exact colour step,
+# grouped under its 9-category sensation/risk label so every colour is visible.
+# (pt_range, sensation, risk, hex)
 LEGEND_GROUPS = [
-    # (sensation, risk, representative_hex, pt_range)
-    ("Very cold",     "Very high", "#1967FD", "≤ −39 °C"),
-    ("Cold",          "High",      "#3D81FE", "−39 to −26 °C"),
-    ("Cool",          "Elevated",  "#81BEFD", "−26 to −13 °C"),
-    ("Slightly cool", "Low",       "#B4E6FF", "−13 to 0 °C"),
-    ("Comfortable",   "None",      "#00E700", "0 to +20 °C"),
-    ("Slightly warm", "Low",       "#FEE362", "+20 to +26 °C"),
-    ("Warm",          "Elevated",  "#FD7D1A", "+26 to +32 °C"),
-    ("Hot",           "High",      "#E11902", "+32 to +38 °C"),
-    ("Very hot",      "Very high", "#E04BFF", "≥ +38 °C"),
+    ("≤ −39 °C",       "Very cold",     "Very high", "#011AFD"),
+    ("−39 to −34 °C",  "Cold",          "High",      "#1967FD"),
+    ("−34 to −30 °C",  "Cold",          "High",      "#2F72FF"),
+    ("−30 to −26 °C",  "Cold",          "High",      "#3D81FE"),
+    ("−26 to −21 °C",  "Cool",          "Elevated",  "#5BA0FD"),
+    ("−21 to −17 °C",  "Cool",          "Elevated",  "#6AAFFD"),
+    ("−17 to −13 °C",  "Cool",          "Elevated",  "#81BEFD"),
+    ("−13 to −8 °C",   "Slightly cool", "Low",       "#A5DAFA"),
+    ("−8 to −4 °C",    "Slightly cool", "Low",       "#B4E6FF"),
+    ("−4 to 0 °C",     "Slightly cool", "Low",       "#CAEFFF"),
+    ("0 to +4 °C",     "Comfortable",   "None",      "#8DFF8D"),
+    ("+4 to +8 °C",    "Comfortable",   "None",      "#01FE03"),
+    ("+8 to +12 °C",   "Comfortable",   "None",      "#00E700"),
+    ("+12 to +16 °C",  "Comfortable",   "None",      "#88FF02"),
+    ("+16 to +20 °C",  "Comfortable",   "None",      "#C8FF2F"),
+    ("+20 to +23 °C",  "Slightly warm", "Low",       "#FFFF7D"),
+    ("+23 to +26 °C",  "Slightly warm", "Low",       "#FEE362"),
+    ("+26 to +29 °C",  "Warm",          "Elevated",  "#FFAF34"),
+    ("+29 to +32 °C",  "Warm",          "Elevated",  "#FD7D1A"),
+    ("+32 to +35 °C",  "Hot",           "High",      "#FF3001"),
+    ("+35 to +38 °C",  "Hot",           "High",      "#E11902"),
+    ("+38 to +41 °C",  "Very hot",      "Very high", "#AD1AE4"),
+    ("+41 to +44 °C",  "Very hot",      "Very high", "#E04BFF"),
+    ("≥ +44 °C",       "Very hot",      "Very high", "#FD7EFF"),
 ]
 
 def classify(temp_c: float) -> dict:
@@ -313,7 +329,7 @@ def build_table(results: list[dict], dates: dict,
         "| Colour | Perceived temperature | Thermal sensation | Health risk |",
         "|:------:|----------------------|-------------------|-------------|",
     ]
-    for sensation, risk, hex_c, pt_range in LEGEND_GROUPS:
+    for pt_range, sensation, risk, hex_c in LEGEND_GROUPS:
         lines.append(f"| {badge(hex_c)} | {pt_range} | {sensation} | {risk} |")
     lines += ["", "<!-- THERMAL_TABLE_END -->"]
     return "\n".join(lines)
