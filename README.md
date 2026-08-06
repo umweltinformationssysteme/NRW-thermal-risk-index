@@ -7,26 +7,26 @@ Data source: [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate
 
 <!-- THERMAL_TABLE_START -->
 
-[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1785928889)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1786015409)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
 
 ---
 
-## Top 10 — Highest Perceived Temperatures Today (2026-08-05)
+## Top 10 — Highest Perceived Temperatures Today (2026-08-06)
 
-*Forecast base: 2026-08-05 03:28 UTC · Generated: 2026-08-05T03:28:48Z*
+*Forecast base: 2026-08-06 03:24 UTC · Generated: 2026-08-06T03:24:51Z*
 
-|   | Municipality | Today (2026-08-05) | Tomorrow (2026-08-06) | Day after (2026-08-07) | Health risk |
+|   | Municipality | Today (2026-08-06) | Tomorrow (2026-08-07) | Day after (2026-08-08) | Health risk |
 |:---:|:---|:---|:---|:---|:---|
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Wesseling** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.6 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.5 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.8 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Niederkassel** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.6 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.5 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.8 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Bonn** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.5 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.4 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.7 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Lohmar** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.1 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.4 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.6 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Siegburg** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.1 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.4 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.6 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Troisdorf** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.1 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.4 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.6 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Alfter** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.0 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.3 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Bornheim** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.0 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.3 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Sankt Augustin** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.0 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.4 °C** · Slightly warm | High |
-| ![](https://placehold.co/14x14/FF3001/FF3001.png) | **Beverungen** | ![](https://placehold.co/14x14/FF3001/FF3001.png) **33.0 °C** · Hot | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **21.4 °C** · Slightly warm | ![](https://placehold.co/14x14/C8FF2F/C8FF2F.png) **19.7 °C** · Comfortable | High |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Wesseling** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.8 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.3 °C** · Slightly warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.1 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Niederkassel** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.8 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.2 °C** · Slightly warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.1 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Köln** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.6 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.4 °C** · Slightly warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.3 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Brühl** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.3 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.6 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Bonn** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.2 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.3 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Alfter** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.2 °C** · Slightly warm | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.8 °C** · Slightly warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.7 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Bornheim** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.2 °C** · Slightly warm | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.8 °C** · Slightly warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.7 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Hürth** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.2 °C** · Slightly warm | ![](https://placehold.co/14x14/FFAF34/FFAF34.png) **28.9 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Lohmar** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.1 °C** · Warm | Low |
+| ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) | **Siegburg** | ![](https://placehold.co/14x14/FFFF7D/FFFF7D.png) **22.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FEE362/FEE362.png) **23.1 °C** · Slightly warm | ![](https://placehold.co/14x14/FD7D1A/FD7D1A.png) **29.1 °C** · Warm | Low |
 
 ### Colour scale
 
