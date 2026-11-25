@@ -7,26 +7,26 @@ Data source: [DWD OpenData – Health Forecasts](https://opendata.dwd.de/climate
 
 <!-- THERMAL_TABLE_START -->
 
-[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1795550256)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
+[![NRW Thermal Risk Map](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/raw/main/output/thermal-risk-map-nrw-today.jpg?1795633231)](https://github.com/umweltinformationssysteme/NRW-thermal-risk-index/blob/main/output/thermal-risk-map-nrw-today.jpg)
 
 ---
 
-## Top 10 — Highest Perceived Temperatures Today (2026-11-24)
+## Top 10 — Highest Perceived Temperatures Today (2026-11-25)
 
-*Forecast base: 2026-11-24 03:16 UTC · Generated: 2026-11-24T03:16:41Z*
+*Forecast base: 2026-11-25 03:16 UTC · Generated: 2026-11-25T03:16:26Z*
 
-|   | Municipality | Today (2026-11-24) | Tomorrow (2026-11-25) | Day after (2026-11-26) | Health risk |
+|   | Municipality | Today (2026-11-25) | Tomorrow (2026-11-26) | Day after (2026-11-27) | Health risk |
 |:---:|:---|:---|:---|:---|:---|
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Schwerte** | ![](https://placehold.co/14x14/00E700/00E700.png) **11.6 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **2.0 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.0 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Finnentrop** | ![](https://placehold.co/14x14/00E700/00E700.png) **9.9 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **0.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-6.1 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Mülheim an der Ruhr** | ![](https://placehold.co/14x14/00E700/00E700.png) **9.5 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **0.5 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.6 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Wetter (Ruhr)** | ![](https://placehold.co/14x14/00E700/00E700.png) **8.4 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **2.2 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.9 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Dortmund** | ![](https://placehold.co/14x14/00E700/00E700.png) **8.2 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **0.7 °C** · Comfortable | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-3.2 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Lennestadt** | ![](https://placehold.co/14x14/00E700/00E700.png) **8.1 °C** · Comfortable | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-0.0 °C** · Slightly cool | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-6.9 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Oberhausen** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **8.0 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **0.9 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.4 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Hagen** | ![](https://placehold.co/14x14/00E700/00E700.png) **8.0 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **2.6 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.5 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/00E700/00E700.png) | **Herdecke** | ![](https://placehold.co/14x14/00E700/00E700.png) **8.0 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **2.6 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.5 °C** · Slightly cool | None |
-| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Holzwickede** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **7.9 °C** · Comfortable | ![](https://placehold.co/14x14/8DFF8D/8DFF8D.png) **0.4 °C** · Comfortable | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-3.7 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Nachrodt-Wiblingwerde** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **5.1 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-5.4 °C** · Slightly cool | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-3.7 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Altena** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.5 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-5.4 °C** · Slightly cool | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-3.9 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Wuppertal** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-6.2 °C** · Slightly cool | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-2.5 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Breckerfeld** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-5.7 °C** · Slightly cool | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.7 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Gevelsberg** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-6.6 °C** · Slightly cool | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-2.5 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Schwelm** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-6.6 °C** · Slightly cool | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-2.5 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Arnsberg** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-6.1 °C** · Slightly cool | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-3.4 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Eslohe (Sauerland)** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.6 °C** · Slightly cool | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-5.2 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Sundern (Sauerland)** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.6 °C** · Slightly cool | ![](https://placehold.co/14x14/CAEFFF/CAEFFF.png) **-3.7 °C** · Slightly cool | None |
+| ![](https://placehold.co/14x14/01FE03/01FE03.png) | **Balve** | ![](https://placehold.co/14x14/01FE03/01FE03.png) **4.4 °C** · Comfortable | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-5.7 °C** · Slightly cool | ![](https://placehold.co/14x14/B4E6FF/B4E6FF.png) **-4.0 °C** · Slightly cool | None |
 
 ### Colour scale
 
